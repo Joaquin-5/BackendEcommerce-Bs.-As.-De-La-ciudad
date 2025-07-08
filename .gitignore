@@ -31,3 +31,21 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Archivos de log y otros temporales
+*.log
+*.tmp
+*.bak
+*.old
+
+# Bases de datos embebidas (por si usás H2 en modo archivo)
+*.mv.db
+*.h2.db
+
+# Archivos de entorno (si usás .env para API keys, tokens, etc.)
+*.env
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
