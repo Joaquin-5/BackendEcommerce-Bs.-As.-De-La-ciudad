@@ -11,4 +11,18 @@ public class ProductController {
     public String test() {
         return "Se intentó acceder a los productos...";
     }
+
+    public String createProduct() {
+        return "Producto creado...";
+    }
+
+    public String listProducts() {
+        return "Lista de productos";
+    }
+
+    public String searchProduct() {
+        return "Producto encontrado...";
+    }
+
+    public String
 }
