@@ -1,28 +1,43 @@
 package com.ecommerce.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.ecommerce.entity.Product;
+import com.ecommerce.service.ProductService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/products")
 public class ProductController {
-    @GetMapping("/")
-    public String test() {
-        return "Se intentó acceder a los productos...";
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
-    public String createProduct() {
-        return "Producto creado...";
+    @GetMapping
+    public List<Product> getAllProducts() {
+        return productService.getAll();
     }
 
-    public String listProducts() {
-        return "Lista de productos";
+    @GetMapping("/{id}")
+    public Product getProductById(@PathVariable Long id) {
+        return productService.getById(id);
     }
 
-    public String searchProduct() {
-        return "Producto encontrado...";
+
+    @PostMapping
+    public Product createProduct(@RequestBody Product product) {
+        return productService.create(product);
     }
 
-    public String
+    @PutMapping("/{id}")
+    public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
+        return productService.update(id, product);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable Long id) {
+        productService.delete(id);
+    }
 }
