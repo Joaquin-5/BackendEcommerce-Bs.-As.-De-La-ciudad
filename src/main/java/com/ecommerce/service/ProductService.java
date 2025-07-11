@@ -1,5 +1,7 @@
 package com.ecommerce.service;
 
+import com.ecommerce.dto.product.ProductRequestDto;
+import com.ecommerce.dto.product.UpdateProductDto;
 import com.ecommerce.entity.Product;
 import com.ecommerce.exception.product.ProductNotFoundException;
 import com.ecommerce.repository.ProductRepository;
@@ -21,23 +23,51 @@ public class ProductService {
 
     public Product getById(Long id) {
         return productRepository.findById(id)
-                .orElseThrow(() -> new ProductNotFoundException("Producto con ID " + id + " no encontrado"));
+                .orElseThrow(() -> new ProductNotFoundException("El producto con el ID: " + id + " no fue encontrado"));
     }
 
-    public Product create(Product product) {
+    public Product create(ProductRequestDto dto) {
+        Product product = new Product();
+        product.setName(dto.getName());
+        product.setDescription(dto.getDescription());
+        product.setCategory(dto.getCategory());
+        product.setPrice(dto.getPrice());
+        product.setStock(dto.getStock());
         return productRepository.save(product);
     }
 
-    public Product update(Long id, Product product) {
-        Product existing = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException("El producto seleccionado para actualizar no fue encontrado"));
-        existing.setName(product.getName());
-        existing.setDescription(product.getDescription());
-        existing.setPrice(product.getPrice());
-        existing.setStock(product.getStock());
+
+    // Método para la actulización total del producto, PUT.
+    public Product update(Long id, UpdateProductDto dto) {
+        Product existing = productRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException("El producto seleccionado no fue encontrado"));
+
+        existing.setName(dto.getName());
+        existing.setDescription(dto.getDescription());
+        existing.setCategory(dto.getCategory());
+        existing.setPrice(dto.getPrice());
+        existing.setStock(dto.getStock());
+
+        return productRepository.save(existing);
+    }
+
+    // Método para actualización parcial de un producto, es decir, un o algunos campos en específico, no todos, PATCH
+    public Product partialUpdate(Long id, UpdateProductDto dto) {
+        Product existing = productRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException("El producto seleccionado para actualizar no fue encontrado"));
+
+        if (dto.getName() != null) existing.setName(dto.getName());
+        if (dto.getDescription() != null) existing.setDescription(dto.getDescription());
+        if (dto.getCategory() != null) existing.setCategory(dto.getCategory());
+        if (dto.getPrice() != null) existing.setPrice(dto.getPrice());
+        if (dto.getStock() != null) existing.setStock(dto.getStock());
+
         return productRepository.save(existing);
     }
 
     public void delete(Long id) {
-        productRepository.deleteById(id);
+        Product product = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException("Producto no encontrado para eliminar"));
+        ;
+        productRepository.delete(product);
     }
 }

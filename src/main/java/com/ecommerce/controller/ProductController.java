@@ -1,7 +1,11 @@
 package com.ecommerce.controller;
 
+import com.ecommerce.dto.product.ProductRequestDto;
+import com.ecommerce.dto.product.ProductResponseDto;
+import com.ecommerce.dto.product.UpdateProductDto;
 import com.ecommerce.entity.Product;
 import com.ecommerce.service.ProductService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,29 +19,49 @@ public class ProductController {
         this.productService = productService;
     }
 
+    private ProductResponseDto toResponse(Product product) {
+        return new ProductResponseDto(
+                product.getId(),
+                product.getName(),
+                product.getDescription(),
+                product.getCategory(),
+                product.getPrice(),
+                product.getStock()
+        );
+    }
+
     @GetMapping
-    public List<Product> getAllProducts() {
-        return productService.getAll();
+    public List<ProductResponseDto> getAllProducts() {
+        return productService.getAll().stream().map(this::toResponse).toList();
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id) {
-        return productService.getById(id);
+    public ProductResponseDto getProductById(@PathVariable Long id) {
+        return toResponse(productService.getById(id));
     }
 
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
-        return productService.create(product);
+    public ProductResponseDto createProduct(@RequestBody ProductRequestDto dto) {
+        Product created = productService.create(dto);
+        return toResponse(created);
     }
 
     @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
-        return productService.update(id, product);
+    public ProductResponseDto updateProduct(@PathVariable Long id, @RequestBody UpdateProductDto dto) {
+        Product updated = productService.update(id, dto);
+        return toResponse(updated);
+    }
+
+    @PatchMapping("/{id}")
+    public ProductResponseDto partialUpdateProduct(@PathVariable Long id, @RequestBody UpdateProductDto dto) {
+        Product updated = productService.partialUpdate(id, dto);
+        return toResponse(updated);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.delete(id);
+        return ResponseEntity.noContent().build(); // Si todo sale bien reponde con un código 204 sin contenido;
     }
 }

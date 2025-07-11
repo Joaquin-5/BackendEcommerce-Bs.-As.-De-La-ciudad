@@ -1,5 +1,6 @@
 package com.ecommerce.dto.product;
 
+import com.ecommerce.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
