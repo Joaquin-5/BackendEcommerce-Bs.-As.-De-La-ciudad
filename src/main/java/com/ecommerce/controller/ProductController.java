@@ -1,8 +1,8 @@
 package com.ecommerce.controller;
 
-import com.ecommerce.dto.product.ProductRequestDto;
-import com.ecommerce.dto.product.ProductResponseDto;
-import com.ecommerce.dto.product.UpdateProductDto;
+import com.ecommerce.dto.request.product.ProductRequestDto;
+import com.ecommerce.dto.response.product.ProductResponseDto;
+import com.ecommerce.dto.update.UpdateProductDto;
 import com.ecommerce.entity.Product;
 import com.ecommerce.service.ProductService;
 import org.springframework.http.ResponseEntity;
