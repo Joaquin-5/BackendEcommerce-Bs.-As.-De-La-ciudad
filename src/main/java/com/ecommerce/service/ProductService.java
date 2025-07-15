@@ -1,7 +1,7 @@
 package com.ecommerce.service;
 
-import com.ecommerce.dto.product.ProductRequestDto;
-import com.ecommerce.dto.product.UpdateProductDto;
+import com.ecommerce.dto.request.product.ProductRequestDto;
+import com.ecommerce.dto.update.UpdateProductDto;
 import com.ecommerce.entity.Product;
 import com.ecommerce.exception.product.ProductNotFoundException;
 import com.ecommerce.repository.ProductRepository;
@@ -37,7 +37,7 @@ public class ProductService {
     }
 
 
-    // Método para la actulización total del producto, PUT.
+    // Método para la actulización total de un producto, PUT.
     public Product update(Long id, UpdateProductDto dto) {
         Product existing = productRepository.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException("El producto seleccionado no fue encontrado"));

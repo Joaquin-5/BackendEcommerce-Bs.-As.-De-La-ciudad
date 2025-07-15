@@ -1,6 +1,5 @@
-package com.ecommerce.dto.product;
+package com.ecommerce.dto.response.product;
 
-import com.ecommerce.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
