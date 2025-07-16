@@ -1,0 +1,74 @@
+// 10 productos de ejemplo
+
+[
+  {
+    "name": "Zapatillas Running",
+    "description": "Zapatillas deportivas para correr con suela antideslizante",
+    "category": "Calzado",
+    "price": 20999.50,
+    "stock": 35
+  },
+  {
+    "name": "Remera Deportiva",
+    "description": "Remera de entrenamiento de tela respirable",
+    "category": "Indumentaria",
+    "price": 8499.00,
+    "stock": 50
+  },
+  {
+    "name": "Pantalón Jogger",
+    "description": "Pantalón jogger cómodo para entrenamiento",
+    "category": "Indumentaria",
+    "price": 13200.00,
+    "stock": 40
+  },
+  {
+    "name": "Mochila Urbana",
+    "description": "Mochila resistente con múltiples compartimientos",
+    "category": "Accesorios",
+    "price": 15999.90,
+    "stock": 20
+  },
+  {
+    "name": "Guantes de Ciclismo",
+    "description": "Guantes acolchonados con agarre antideslizante",
+    "category": "Accesorios",
+    "price": 4999.75,
+    "stock": 60
+  },
+  {
+    "name": "Auriculares Bluetooth",
+    "description": "Auriculares inalámbricos con cancelación de ruido",
+    "category": "Tecnología",
+    "price": 18999.99,
+    "stock": 25
+  },
+  {
+    "name": "Smartwatch Deportivo",
+    "description": "Reloj inteligente con contador de pasos y frecuencia cardíaca",
+    "category": "Tecnología",
+    "price": 25999.90,
+    "stock": 30
+  },
+  {
+    "name": "Buzo Canguro",
+    "description": "Buzo con capucha de algodón",
+    "category": "Indumentaria",
+    "price": 11450.00,
+    "stock": 45
+  },
+  {
+    "name": "Lentes de Sol",
+    "description": "Lentes con protección UV400",
+    "category": "Accesorios",
+    "price": 7700.00,
+    "stock": 70
+  },
+  {
+    "name": "Botella Térmica",
+    "description": "Botella de acero inoxidable de 750ml",
+    "category": "Accesorios",
+    "price": 5699.00,
+    "stock": 80
+  }
+]
