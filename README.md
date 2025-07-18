@@ -1,7 +1,8 @@
 # Ecommerce Back-End
 
 Este proyecto es un backend para un ecommerce desarollado como parte del trabajo final del curso de Back-End / Java de buenos aires de la ciudad. 
-Esta API Rest permite crear productos, mostrarlos, buscar un producto en específico actualizarlos y borrarlos. También permite crear pedidos, mostrarlos, buscar un pedido en específico y eliminarlos
+Esta API Rest permite crear productos, mostrarlos, buscar un producto en específico actualizarlos y borrarlos. También permite crear pedidos, mostrarlos, buscar un pedido en específico y eliminarlos.
+Dentro de la carpeta de la raíz del proyecto (BackendEcommerce-Bs.-As.-De-La-ciudad) se encuentra una carpeta docs que tiene dos archivos .txt uno con productos y otro pedidos, ambos en formato json, para insertar directamente en una aplicación de prueba y depuración de API's (Postman, Insomia)
 
 ## Tecnologías Usadas, frameworks, dependencias y Arquitectura
 
